@@ -15,4 +15,12 @@ public class AuthorMapper {
                 .lastName(author.getLastName())
                 .build();
     }
+
+    public static Author mapToDomain(AuthorJPA authorJPA) {
+        return Author.builder()
+                .id(authorJPA.getId())
+                .firstName(authorJPA.getFirstName())
+                .lastName(authorJPA.getLastName())
+                .build();
+    }
 }

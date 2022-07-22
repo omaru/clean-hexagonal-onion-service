@@ -5,6 +5,9 @@ import nl.codecentric.clean_hexagonal_onion_service.domain.author.Author;
 import nl.codecentric.clean_hexagonal_onion_service.domain.author.AuthorService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author Maik Kingma
  */
@@ -23,5 +26,12 @@ public class AuthorServiceImpl implements AuthorService {
     public void registerAuthor(Author author) {
         log.info("registering author: " + author.getFullName());
         authorRepository.save(AuthorMapper.mapToJPA(author));
+    }
+
+    @Override
+    public List<Author> findAll() {
+        return authorRepository.findAll().stream()
+                .map(AuthorMapper::mapToDomain)
+                .collect(Collectors.toList());
     }
 }

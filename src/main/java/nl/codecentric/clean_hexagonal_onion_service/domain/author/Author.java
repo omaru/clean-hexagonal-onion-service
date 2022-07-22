@@ -2,12 +2,14 @@ package nl.codecentric.clean_hexagonal_onion_service.domain.author;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 /**
  * @author Maik Kingma
  */
 
+@Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Author {
 
