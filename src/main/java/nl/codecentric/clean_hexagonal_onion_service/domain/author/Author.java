@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import nl.codecentric.clean_hexagonal_onion_service.domain.book.Book;
+import nl.codecentric.clean_hexagonal_onion_service.domain.book.Genre;
 
 /**
  * @author Maik Kingma
@@ -24,6 +26,10 @@ public class Author {
 
     public static Author createAuthor(String firstName, String lastName) {
         return new Author(null, firstName, lastName);
+    }
+
+    public Book writeManuscript(String title, Genre genre) {
+        return Book.createManuscript(title, genre, this);
     }
 
     public String getFullName() {

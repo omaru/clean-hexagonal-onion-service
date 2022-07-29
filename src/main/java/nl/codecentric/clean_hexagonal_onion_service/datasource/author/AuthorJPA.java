@@ -1,4 +1,4 @@
-package nl.codecentric.clean_hexagonal_onion_service.datasource;
+package nl.codecentric.clean_hexagonal_onion_service.datasource.author;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package nl.codecentric.clean_hexagonal_onion_service.query;
+package nl.codecentric.clean_hexagonal_onion_service.query.author;
 
 import nl.codecentric.clean_hexagonal_onion_service.domain.author.AuthorService;
 import org.springframework.web.bind.annotation.GetMapping;

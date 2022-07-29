@@ -1,4 +1,4 @@
-package nl.codecentric.clean_hexagonal_onion_service.datasource;
+package nl.codecentric.clean_hexagonal_onion_service.datasource.author;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

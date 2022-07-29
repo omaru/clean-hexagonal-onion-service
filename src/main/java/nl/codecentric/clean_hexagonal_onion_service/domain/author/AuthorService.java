@@ -10,4 +10,12 @@ public interface AuthorService {
     void registerAuthor(Author author);
 
     List<Author> findAll();
+
+    Author findById(Long authorId);
+
+    class AuthorNotFoundException extends RuntimeException{
+        public AuthorNotFoundException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
 }

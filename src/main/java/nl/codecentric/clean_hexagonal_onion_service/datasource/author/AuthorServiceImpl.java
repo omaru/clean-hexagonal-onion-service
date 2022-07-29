@@ -1,4 +1,4 @@
-package nl.codecentric.clean_hexagonal_onion_service.datasource;
+package nl.codecentric.clean_hexagonal_onion_service.datasource.author;
 
 import lombok.extern.slf4j.Slf4j;
 import nl.codecentric.clean_hexagonal_onion_service.domain.author.Author;
@@ -33,5 +33,11 @@ public class AuthorServiceImpl implements AuthorService {
         return authorRepository.findAll().stream()
                 .map(AuthorMapper::mapToDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Author findById(Long authorId) {
+        return authorRepository.findById(authorId).map(AuthorMapper::mapToDomain).orElseThrow(() ->
+            new AuthorNotFoundException(String.format("Author with id %d could not be found!", authorId)));
     }
 }

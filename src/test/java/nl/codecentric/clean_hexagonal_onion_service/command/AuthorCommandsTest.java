@@ -1,8 +1,8 @@
 package nl.codecentric.clean_hexagonal_onion_service.command;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nl.codecentric.clean_hexagonal_onion_service.datasource.AuthorJPA;
-import nl.codecentric.clean_hexagonal_onion_service.datasource.AuthorRepository;
+import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorJPA;
+import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
