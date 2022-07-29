@@ -1,6 +1,7 @@
-package nl.codecentric.clean_hexagonal_onion_service.command;
+package nl.codecentric.clean_hexagonal_onion_service.command.author;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import nl.codecentric.clean_hexagonal_onion_service.command.RegisterAuthorDTO;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorJPA;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -45,7 +48,8 @@ class AuthorCommandsTest {
                 .andExpect(status().isAccepted());
         authorRepository.flush();
         // then
-        assertThat(authorRepository.findAll().size()).isEqualTo(1);
-        assertThat(authorRepository.findAll().get(0)).usingRecursiveComparison().ignoringFields("id").isEqualTo(expected);
+        List<AuthorJPA> authors = authorRepository.findAll();
+        assertThat(authors.size()).isEqualTo(1);
+        assertThat(authors.get(0)).usingRecursiveComparison().ignoringFields("id").isEqualTo(expected);
     }
 }
