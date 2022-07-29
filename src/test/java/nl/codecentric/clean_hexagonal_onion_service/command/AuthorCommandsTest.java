@@ -36,8 +36,8 @@ class AuthorCommandsTest {
     @Test
     void registerAndGet() throws Exception {
         //given
-        var registerAuthorDTOJson = objectMapper.writeValueAsString(new RegisterAuthorDTO("firstName", "lastName2"));
-        var expected = AuthorJPA.builder().firstName("firstName").lastName("lastName2").build();
+        var registerAuthorDTOJson = objectMapper.writeValueAsString(new RegisterAuthorDTO("firstName", "lastName"));
+        var expected = AuthorJPA.builder().firstName("firstName").lastName("lastName").build();
         //when
         mockMvc.perform(post("/authors/commands/register")
                         .contentType(MediaType.APPLICATION_JSON)

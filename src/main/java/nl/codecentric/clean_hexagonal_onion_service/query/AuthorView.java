@@ -1,5 +1,6 @@
 package nl.codecentric.clean_hexagonal_onion_service.query;
 
+import lombok.AllArgsConstructor;
 import lombok.Value;
 import nl.codecentric.clean_hexagonal_onion_service.domain.author.Author;
 
@@ -8,6 +9,7 @@ import nl.codecentric.clean_hexagonal_onion_service.domain.author.Author;
  */
 
 @Value
+@AllArgsConstructor
 public class AuthorView {
     public AuthorView(Author author) {
         this.id = author.getId();
