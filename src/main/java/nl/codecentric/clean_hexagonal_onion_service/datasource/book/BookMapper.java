@@ -11,7 +11,7 @@ import nl.codecentric.clean_hexagonal_onion_service.domain.book.Book;
 public class BookMapper {
 
     public static BookJPA mapToJPA(Book book) {
-        return BookJPA.builder()
+        BookJPA bookJPA = BookJPA.builder()
                 .id(book.getId())
                 .author(AuthorJPA.builder().id(book.getAuthor().getId()).build())
                 .genre(book.getGenre())
@@ -20,6 +20,8 @@ public class BookMapper {
                 .publisherId(book.getPublisherId())
                 .isbn(book.getIsbn())
                 .build();
+        bookJPA.registerDomainEvents(book.getDomainEvents());
+        return bookJPA;
     }
 
     public static Book mapToDomain(BookJPA bookJPA) {

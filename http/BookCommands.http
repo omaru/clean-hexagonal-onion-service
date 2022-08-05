@@ -1,0 +1,12 @@
+
+
+### Register an author
+### TODO chnage the author id to something that exists in your DB
+POST /books/10011/commands/publish HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "publisherId": "6b4ca9c9-b3ae-4130-b3f8-2da873c3940e"
+}
+

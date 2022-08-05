@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorJPA;
 import nl.codecentric.clean_hexagonal_onion_service.domain.book.Genre;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,7 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
+import java.util.List;
 import java.util.UUID;
 
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -31,7 +32,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor()
 @AllArgsConstructor
 @Table(name = "book")
-public class BookJPA {
+public class BookJPA extends AbstractAggregateRoot<BookJPA> {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "book_seq_gen")
@@ -59,4 +60,8 @@ public class BookJPA {
 
     @Getter
     private String isbn;
+
+    public void registerDomainEvents(List<Object> domainEvents) {
+        domainEvents.forEach(this::andEvent);
+    }
 }

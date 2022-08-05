@@ -12,4 +12,18 @@ public interface BookService {
     List<Book> findAll();
 
     List<Book> findByPartialTitle(String title);
+
+    Book findById(Long bookId);
+
+    class BookNotFoundException  extends RuntimeException{
+        public BookNotFoundException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
+
+    class BookAlreadyInPublishingException  extends RuntimeException{
+        public BookAlreadyInPublishingException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
 }

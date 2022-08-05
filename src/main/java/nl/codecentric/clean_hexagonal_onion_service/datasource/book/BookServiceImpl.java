@@ -36,4 +36,11 @@ public class BookServiceImpl implements BookService {
     public List<Book> findByPartialTitle(String title) {
         return bookRepository.findByTitleContains(title).stream().map(BookMapper::mapToDomain).collect(Collectors.toList());
     }
+
+    @Override
+    public Book findById(Long bookId) {
+        return bookRepository.findById(bookId)
+                .map(BookMapper::mapToDomain)
+                .orElseThrow(() -> new BookNotFoundException(String.format("Book with id %d could not be found!", bookId)));
+    }
 }
