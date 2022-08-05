@@ -19,14 +19,15 @@ import java.util.stream.Collectors;
 public class PublisherServiceImpl implements PublisherService {
 
     private static final String SUB_PATH_PUBLISHERS = "/publishers";
+
+    private final RestTemplate restTemplate = new RestTemplate();
     
     @Value("${publisher.service.host}")
     private String publisherServiceBaseUri;
 
     @Override
     public List<Publisher> getAllPublishers() {
-        String uri=getUri(SUB_PATH_PUBLISHERS);
-        RestTemplate restTemplate = new RestTemplate();
+        String uri = getUri(SUB_PATH_PUBLISHERS);
         var result = restTemplate.getForObject(uri, PublisherDTO[].class);
         return Arrays.stream(Objects.requireNonNull(result))
                 .map(publisherDTO -> Publisher.builder().id(publisherDTO.getId()).name(publisherDTO.getName()).build())

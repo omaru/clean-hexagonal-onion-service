@@ -1,7 +1,6 @@
 package nl.codecentric.clean_hexagonal_onion_service.command.author;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nl.codecentric.clean_hexagonal_onion_service.command.WriteBookDTO;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorJPA;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorRepository;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.book.BookJPA;

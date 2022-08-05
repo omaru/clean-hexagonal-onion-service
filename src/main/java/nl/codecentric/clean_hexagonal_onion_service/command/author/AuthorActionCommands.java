@@ -1,4 +1,4 @@
-package nl.codecentric.clean_hexagonal_onion_service.command;
+package nl.codecentric.clean_hexagonal_onion_service.command.author;
 
 import nl.codecentric.clean_hexagonal_onion_service.domain.author.AuthorService;
 import nl.codecentric.clean_hexagonal_onion_service.domain.book.BookService;
