@@ -4,9 +4,8 @@ import nl.codecentric.clean_hexagonal_onion_service.domain.book.Book;
 import nl.codecentric.clean_hexagonal_onion_service.domain.book.BookService;
 import nl.codecentric.clean_hexagonal_onion_service.domain.publisher.PublisherService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
 
 /**
  * @author Maik Kingma
@@ -24,7 +23,7 @@ public class PublishBookDelegate {
         this.publisherService = publisherService;
     }
 
-    @Transactional(propagation = REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void publishBook(Book.RequestPublishingEvent event) {
         var book = bookService.findById(event.getBookId());
         var isbn = publisherService.requestPublishing(event.getPublisherId(), book.getAuthor().getFullName(),

@@ -42,10 +42,11 @@ public class Book {
     private String isbn;
 
     @Getter
-    private final List<Object> domainEvents = new ArrayList<>();
+    @Builder.Default
+    private List<Object> domainEvents = new ArrayList<>();
 
     public static Book createManuscript(String title, Genre genre, Author author) {
-        return new Book(null, author, title, genre, null, false, null);
+        return new Book(null, author, title, genre, null, false, null, new ArrayList<>());
     }
 
     public void requestPublishing(UUID publisherId) {
@@ -60,6 +61,10 @@ public class Book {
     public void updatePublishingInfo(String isbn) {
         this.isbn = isbn;
         this.published = true;
+    }
+
+    public void clearDomainEvents() {
+        this.domainEvents = new ArrayList<>();
     }
 
     @Value

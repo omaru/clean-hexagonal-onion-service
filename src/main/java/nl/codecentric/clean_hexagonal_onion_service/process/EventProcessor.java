@@ -3,7 +3,6 @@ package nl.codecentric.clean_hexagonal_onion_service.process;
 import lombok.extern.slf4j.Slf4j;
 import nl.codecentric.clean_hexagonal_onion_service.domain.book.Book;
 import nl.codecentric.clean_hexagonal_onion_service.process.book.PublishBookDelegate;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
 
@@ -23,11 +22,9 @@ public class EventProcessor {
         this.publishBookDelegate = publishBookDelegate;
     }
 
-    @Async
     @TransactionalEventListener(phase = AFTER_COMMIT)
     public void handleEvent(Book.RequestPublishingEvent requestPublishingEvent) {
         log.info(requestPublishingEvent.toString());
         publishBookDelegate.publishBook(requestPublishingEvent);
-
     }
 }

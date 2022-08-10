@@ -25,6 +25,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void storeManuscript(Book book) {
         bookRepository.save(BookMapper.mapToJPA(book));
+        book.clearDomainEvents();
     }
 
     @Override
