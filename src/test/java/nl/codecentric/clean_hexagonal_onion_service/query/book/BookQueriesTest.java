@@ -6,6 +6,7 @@ import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorJPA;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.book.BookJPA;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.book.BookRepository;
 import nl.codecentric.clean_hexagonal_onion_service.domain.book.Genre;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -37,6 +38,12 @@ class BookQueriesTest {
 
     @Autowired
     private EntityManager entityManager;
+
+    @BeforeEach
+    void beforeEach() {
+        bookRepository.deleteAll();
+        bookRepository.flush();
+    }
 
     @Test
     @Transactional

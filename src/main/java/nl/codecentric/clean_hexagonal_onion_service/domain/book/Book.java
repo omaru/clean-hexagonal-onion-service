@@ -43,7 +43,7 @@ public class Book {
 
     @Getter
     @Builder.Default
-    private List<Object> domainEvents = new ArrayList<>();
+    private List<DomainEvent> domainEvents = new ArrayList<>();
 
     public static Book createManuscript(String title, Genre genre, Author author) {
         return new Book(null, author, title, genre, null, false, null, new ArrayList<>());

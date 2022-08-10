@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import nl.codecentric.clean_hexagonal_onion_service.datasource.author.AuthorJPA;
 import nl.codecentric.clean_hexagonal_onion_service.domain.book.Genre;
+import nl.codecentric.clean_hexagonal_onion_service.process.DomainEvent;
 import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.Entity;
@@ -61,7 +62,7 @@ public class BookJPA extends AbstractAggregateRoot<BookJPA> {
     @Getter
     private String isbn;
 
-    public void registerDomainEvents(List<Object> domainEvents) {
+    public void registerDomainEvents(List<DomainEvent> domainEvents) {
         domainEvents.forEach(this::andEvent);
     }
 }
