@@ -1,11 +1,14 @@
-package nl.codecentric.clean_hexagonal_onion_service.datasource;
+package nl.codecentric.clean_hexagonal_onion_service.datasource.jpa.author;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import nl.codecentric.clean_hexagonal_onion_service.datasource.jpa.book.BookJPA;
 
 import javax.persistence.*;
+
+import java.util.Set;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -22,4 +25,7 @@ public class AuthorJPA {
     private Long id;
     private String firstName;
     private String lastName;
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<BookJPA> books;
+
 }

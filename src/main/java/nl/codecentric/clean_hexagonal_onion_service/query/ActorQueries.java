@@ -1,7 +1,7 @@
 package nl.codecentric.clean_hexagonal_onion_service.query;
 
 import lombok.RequiredArgsConstructor;
-import nl.codecentric.clean_hexagonal_onion_service.domain.AuthorService;
+import nl.codecentric.clean_hexagonal_onion_service.domain.author.AuthorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -2,9 +2,9 @@ package nl.codecentric.clean_hexagonal_onion_service.query;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nl.codecentric.clean_hexagonal_onion_service.datasource.AuthorJPA;
-import nl.codecentric.clean_hexagonal_onion_service.datasource.AuthorRepository;
-import nl.codecentric.clean_hexagonal_onion_service.domain.Author;
+import nl.codecentric.clean_hexagonal_onion_service.datasource.jpa.author.AuthorJPA;
+import nl.codecentric.clean_hexagonal_onion_service.datasource.jpa.author.AuthorRepository;
+import nl.codecentric.clean_hexagonal_onion_service.domain.author.Author;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
